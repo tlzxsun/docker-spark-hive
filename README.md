@@ -110,4 +110,8 @@ networks:
       config:
         - subnet: 172.28.0.0/16
 ```
-
+## How to use
+Just run the command below in the root of the repo, otherwise you will have to provide a hive-site.yaml to make it work.
+```
+docker-compose up -d
+```
