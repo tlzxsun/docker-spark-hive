@@ -16,6 +16,7 @@ services:
     volumes:
       - ./tmp/spark-events-local:/tmp/spark-events
       - ./spark/conf/hive-site.xml:/spark/conf/hive-site.xml
+      - ./warehouse:/opt/hive/data/warehouse/
     extra_hosts:
       - "spark-master:172.28.1.1"
       - "spark-worker:172.28.1.2"
@@ -37,6 +38,7 @@ services:
     volumes:
       - ./tmp/spark-events-local:/tmp/spark-events
       - ./spark/conf/hive-site.xml:/spark/conf/hive-site.xml
+      - ./warehouse:/opt/hive/data/warehouse/
     extra_hosts:
       - "spark-master:172.28.1.1"
       - "spark-worker:172.28.1.2"
@@ -56,6 +58,7 @@ services:
       volumes:
         - ./tmp/spark-events-local:/tmp/spark-events
         - ./spark/conf/hive-site.xml:/spark/conf/hive-site.xml
+        - ./warehouse:/opt/hive/data/warehouse/
       extra_hosts:
         - "spark-master:172.28.1.1"
         - "spark-worker:172.28.1.2"
@@ -76,6 +79,8 @@ services:
         - "spark-history-server:172.28.1.3"
         - "metastore:172.28.1.4"
         - "hive:172.28.1.5"
+      volumes:
+        - ./warehouse:/opt/hive/data/warehouse/
   hive:
       image: apache/hive:3.1.3
       container_name: hive
@@ -96,6 +101,8 @@ services:
         - "spark-history-server:172.28.1.3"
         - "metastore:172.28.1.4"
         - "hive:172.28.1.5"
+      volumes:
+        - ./warehouse:/opt/hive/data/warehouse/
 networks:
   spark_net:
     ipam:
